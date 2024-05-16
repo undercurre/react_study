@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     // 学习点：直接编写内联样式
-    <div style={{ marginTop: "600px" }}>
+    <div style={{ marginTop: "60px" }}>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
