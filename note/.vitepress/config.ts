@@ -18,7 +18,11 @@ export default defineConfig({
           { text: "总览", link: "/overview" },
           {
             text: "基本渲染",
-            items: [{ text: "循环渲染", link: "/cycleRender" }],
+            items: [
+              { text: "循环渲染", link: "/cycleRender" },
+              { text: "条件渲染", link: "/conditionRender" },
+              { text: "数据绑定", link: "/dataControler" },
+            ],
           },
           { text: "生命周期", link: "/life" },
           { text: "MVVM", link: "/mvvm" },
