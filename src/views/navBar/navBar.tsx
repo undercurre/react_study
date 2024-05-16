@@ -55,6 +55,9 @@ const items: MenuItem[] = [
       { key: "/webTools", label: "WebTools" },
     ],
   },
+  { key: "/conditionRender", label: "ConditionRender" },
+  { key: "/cycleRender", label: "CycleRender" },
+  { key: "/dataControler", label: "DataControler" },
 ];
 
 const NavBar: React.FC = () => {
