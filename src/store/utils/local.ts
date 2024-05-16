@@ -1,4 +1,4 @@
-// 
+// 用于把store数据同步到localStorage中
 
 import { RootState } from "..";
 

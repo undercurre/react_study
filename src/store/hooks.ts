@@ -1,4 +1,4 @@
-// hooks.ts
+// 用于使用嵌合typescript和redux
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "./index";
 

@@ -1,13 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
-import {
-  CounterState,
-  decrement,
-  increment,
-} from "../../store/reducers/counter";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { decrement, increment } from "../../store/reducers/counter";
 
 export default function Counter() {
-  const count = useSelector((state: CounterState) => state.counter.value);
-  const dispatch = useDispatch();
+  const count = useAppSelector((state) => state.counter.value);
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -25,6 +22,9 @@ export default function Counter() {
         >
           Decrement
         </button>
+      </div>
+      <div>
+        <span>{`Name: ${user.name}, Age: ${user.age}`}</span>
       </div>
     </div>
   );

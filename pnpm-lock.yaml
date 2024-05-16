@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^5.3.7
   '@react-hookz/web': ^24.0.4
   '@react-spring/web': ^9.7.3
   '@reduxjs/toolkit': ^2.2.4
@@ -28,6 +29,7 @@ specifiers:
   vite: ^5.2.0
 
 dependencies:
+  '@ant-design/icons': 5.3.7_nnrd3gsncyragczmpvfhocinkq
   '@react-hookz/web': 24.0.4_nnrd3gsncyragczmpvfhocinkq
   '@react-spring/web': 9.7.3_nnrd3gsncyragczmpvfhocinkq
   '@reduxjs/toolkit': 2.2.4_irch7jnnqrn7hjrrnjtulxh6lm

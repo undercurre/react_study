@@ -10,7 +10,7 @@ import AnimatedBox from "../components/Extras/Animated";
 import AntDesign from "../components/Extras/AntDesign";
 import WebTools from "../components/Tools/WebTools";
 import StoreCounter from "../components/Tools/StoreCounter";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import User from "../views/user";
 
 function RouterConfig() {
@@ -18,9 +18,10 @@ function RouterConfig() {
     // 学习点： 路由配置，关键点：Route, Routes的使用，并在路由根部定义Router包裹
     <>
       <Routes>
+        <Route path="/" element={<Navigate replace to="/antDesign" />} />
         <Route path="/antDesign" element={<AntDesign />} />
         <Route path="/cssAnimation" element={<CssAnimation />} />
-        <Route path="/rafAnimattion" element={<RafAnimattion />} />
+        <Route path="/rafAnimation" element={<RafAnimattion />} />
         <Route path="/conditionRender" element={<ConditionRender />} />
         <Route path="/cycleRender" element={<CycleRender />} />
         <Route path="/dataControler" element={<DataControler />} />
@@ -33,7 +34,7 @@ function RouterConfig() {
           element={<ClassComponent title="类定义组件" />}
         />
         <Route path="/transitionGroup" element={<TransitionGroup />} />
-        <Route path="/animatedBox" element={<AnimatedBox />} />
+        <Route path="/animated" element={<AnimatedBox />} />
         <Route path="/webTools" element={<WebTools />} />
         <Route path="/storeCounter" element={<StoreCounter />} />
         {/* 路由传参 */}
