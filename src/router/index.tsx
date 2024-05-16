@@ -11,10 +11,11 @@ import AntDesign from "../components/Extras/AntDesign";
 import WebTools from "../components/Tools/WebTools";
 import StoreCounter from "../components/Tools/StoreCounter";
 import { Route, Routes } from "react-router-dom";
+import User from "../views/user";
 
-function App() {
+function RouterConfig() {
   return (
-    // 学习点： 组件化
+    // 学习点： 路由配置，关键点：Route, Routes的使用，并在路由根部定义Router包裹
     <>
       <Routes>
         <Route path="/antDesign" element={<AntDesign />} />
@@ -35,9 +36,11 @@ function App() {
         <Route path="/animatedBox" element={<AnimatedBox />} />
         <Route path="/webTools" element={<WebTools />} />
         <Route path="/storeCounter" element={<StoreCounter />} />
+        {/* 路由传参 */}
+        <Route path="/user/:userId" element={<User />} />
       </Routes>
     </>
   );
 }
 
-export default App;
+export default RouterConfig;

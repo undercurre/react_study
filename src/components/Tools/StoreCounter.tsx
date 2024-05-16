@@ -3,7 +3,7 @@ import {
   CounterState,
   decrement,
   increment,
-} from "../../store/reducers/counterReducer";
+} from "../../store/reducers/counter";
 
 export default function Counter() {
   const count = useSelector((state: CounterState) => state.counter.value);

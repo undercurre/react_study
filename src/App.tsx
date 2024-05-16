@@ -52,6 +52,9 @@ function App() {
             <li>
               <Link to="/storeCounter">StoreCounter</Link>
             </li>
+            <li>
+              <Link to="/user/123">User 123</Link> {/* 示例用户ID */}
+            </li>
           </ul>
         </nav>
         <RouterConfig></RouterConfig>
