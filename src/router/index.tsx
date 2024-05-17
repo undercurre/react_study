@@ -15,6 +15,9 @@ import User from "../views/user";
 import EventHandler from "../components/EventHandler";
 import ElementRef from "../components/ElementRef";
 import StyleHandler from "../components/StyleHandler";
+import ClassLifecycleDemo from "../components/LifeCycle/ClassLifecycleDemo";
+import FunctionLifecycleDemo from "../components/LifeCycle/FunctionLifecycleDemo";
+import UseLayoutEffectDemo from "../components/LifeCycle/UseLayoutEffectDemo";
 
 function RouterConfig() {
   return (
@@ -31,6 +34,12 @@ function RouterConfig() {
         <Route path="/eventHandler" element={<EventHandler />} />
         <Route path="/elementRef" element={<ElementRef />} />
         <Route path="/styleHandler" element={<StyleHandler />} />
+        <Route path="/classLifecycleDemo" element={<ClassLifecycleDemo />} />
+        <Route path="/useLayoutEffectDemo" element={<UseLayoutEffectDemo />} />
+        <Route
+          path="/functionLifecycleDemo"
+          element={<FunctionLifecycleDemo />}
+        />
         <Route
           path="/functionComponent"
           element={<FunctionComponent title={"函数式组件"} />}

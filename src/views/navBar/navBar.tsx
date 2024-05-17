@@ -61,13 +61,21 @@ const items: MenuItem[] = [
   { key: "/eventHandler", label: "EventHandler" },
   { key: "/elementRef", label: "ElementRef" },
   { key: "/styleHandler", label: "StyleHandler" },
+  {
+    key: "lifeCycle",
+    label: "LifeCycle",
+    children: [
+      { key: "/classLifecycleDemo", label: "ClassLifecycleDemo" },
+      { key: "/functionLifecycleDemo", label: "FunctionLifecycleDemo" },
+      { key: "/useLayoutEffectDemo", label: "UseLayoutEffectDemo" },
+    ],
+  },
 ];
 
 const NavBar: React.FC = () => {
   const navigate = useNavigate();
 
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     navigate(e.key);
   };
 
@@ -77,7 +85,13 @@ const NavBar: React.FC = () => {
         onClick={onClick}
         style={{ width: 256 }}
         defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["animations", "components", "extras", "tools"]}
+        defaultOpenKeys={[
+          "animations",
+          "components",
+          "extras",
+          "tools",
+          "lifeCycle",
+        ]}
         mode="inline"
         items={items}
       />
