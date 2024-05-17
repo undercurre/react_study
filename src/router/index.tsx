@@ -13,6 +13,8 @@ import StoreCounter from "../components/Tools/StoreCounter";
 import { Navigate, Route, Routes } from "react-router-dom";
 import User from "../views/user";
 import EventHandler from "../components/EventHandler";
+import ElementRef from "../components/ElementRef";
+import StyleHandler from "../components/StyleHandler";
 
 function RouterConfig() {
   return (
@@ -27,6 +29,8 @@ function RouterConfig() {
         <Route path="/cycleRender" element={<CycleRender />} />
         <Route path="/dataControler" element={<DataControler />} />
         <Route path="/eventHandler" element={<EventHandler />} />
+        <Route path="/elementRef" element={<ElementRef />} />
+        <Route path="/styleHandler" element={<StyleHandler />} />
         <Route
           path="/functionComponent"
           element={<FunctionComponent title={"函数式组件"} />}
