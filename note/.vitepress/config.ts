@@ -34,6 +34,7 @@ export default defineConfig({
           { text: "静态存储", link: "/store" },
           { text: "路由", link: "/router" },
           { text: "网络请求", link: "/fetch" },
+          { text: "3D开发", link: "/three" },
           { text: "打包", link: "/package" },
         ],
       },
