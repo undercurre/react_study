@@ -1,85 +1,189 @@
-# Markdown Extension Examples
+# 静态存储
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+## 相当于`vue`常用的`pinia`
 
-## Syntax Highlighting
+使用`redux`
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+```tsx
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { decrement, increment } from "../../store/reducers/counter";
 
-**Input**
+export default function Counter() {
+  const count = useAppSelector((state) => state.counter.value);
+  const user = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
+  return (
+    <div>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
+      </div>
+      <div>
+        <span>{`Name: ${user.name}, Age: ${user.age}`}</span>
+      </div>
+    </div>
+  );
 }
 ```
-````
 
-**Output**
+## store 配置
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
+```shell
+├─ hooks.ts
+├─ index.ts
+├─ reducers
+│   ├─ counter.ts
+│   └─ user.ts
+└─ utils
+    └─ local.ts
+
+```
+
+```ts
+// counter.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface CounterState {
+  value: number;
 }
+
+const initialState: CounterState = { value: 0 };
+
+export const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state) => {
+      // Redux Toolkit 允许我们在 reducers 写 "可变" 逻辑。它
+      // 并不是真正的改变状态值，因为它使用了 Immer 库
+      // 可以检测到“草稿状态“ 的变化并且基于这些变化生产全新的
+      // 不可变的状态
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    },
+  },
+});
+// 每个 case reducer 函数会生成对应的 Action creators
+export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+
+export default counterSlice.reducer;
 ```
 
-## Custom Containers
+```ts
+// user.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-**Input**
+interface UserState {
+  name: string;
+  age: number;
+}
 
-```md
-::: info
-This is an info box.
-:::
+const initialState: UserState = { name: "", age: 0 };
 
-::: tip
-This is a tip.
-:::
+export const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    setName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
+    setAge: (state, action: PayloadAction<number>) => {
+      state.age = action.payload;
+    },
+  },
+});
 
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
+export const { setName, setAge } = userSlice.actions;
+export default userSlice.reducer;
 ```
 
-**Output**
+```ts
+// local.ts
+// 用于把store数据同步到localStorage中
 
-::: info
-This is an info box.
-:::
+import { RootState } from "..";
 
-::: tip
-This is a tip.
-:::
+export const saveState = (state: Partial<RootState>) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("appState", serializedState);
+  } catch (err) {
+    console.error("Could not save state", err);
+  }
+};
 
-::: warning
-This is a warning.
-:::
+export const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem("appState");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    console.error("Could not load state", err);
+    return undefined;
+  }
+};
+```
 
-::: danger
-This is a dangerous warning.
-:::
+```ts
+// hooks.ts
+// 用于使用嵌合typescript和redux
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "./index";
 
-::: details
-This is a details block.
-:::
+// 使用这些钩子代替普通的 `useDispatch` 和 `useSelector`
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+```
 
-## More
+```ts
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./reducers/counter";
+import userReducer from "./reducers/user";
+import { loadState, saveState } from "./utils/local";
 
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+// 配置reducer
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  user: userReducer,
+});
+
+// 取出localStorage中的初始状态
+const preloadedState = loadState();
+
+// 配置store
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState, // 加载初始状态
+});
+
+// Typescript嵌入实现
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+// 监听store的变化
+store.subscribe(() => {
+  const state = store.getState();
+  saveState({ counter: state.counter }); // 只保存 counter 的状态到 localStorage
+});
+
+export default store;
+```
