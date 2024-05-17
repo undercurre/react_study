@@ -62,6 +62,7 @@ const items: MenuItem[] = [
   { key: "/elementRef", label: "ElementRef" },
   { key: "/styleHandler", label: "StyleHandler" },
   { key: "/dataWatch", label: "DataWatch" },
+  { key: "/axiosDemo", label: "AxiosDemo" },
   {
     key: "lifeCycle",
     label: "LifeCycle",

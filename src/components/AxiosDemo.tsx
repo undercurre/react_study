@@ -1,8 +1,3 @@
-# 网络请求
-
-## 一样使用`axios`
-
-```tsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -56,4 +51,3 @@ const AxiosExample: React.FC = () => {
 };
 
 export default AxiosExample;
-```

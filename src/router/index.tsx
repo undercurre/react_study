@@ -19,6 +19,7 @@ import ClassLifecycleDemo from "../components/LifeCycle/ClassLifecycleDemo";
 import FunctionLifecycleDemo from "../components/LifeCycle/FunctionLifecycleDemo";
 import UseLayoutEffectDemo from "../components/LifeCycle/UseLayoutEffectDemo";
 import DataWatch from "../components/DataWatch";
+import AxiosDemo from "../components/AxiosDemo";
 
 function RouterConfig() {
   return (
@@ -38,6 +39,7 @@ function RouterConfig() {
         <Route path="/classLifecycleDemo" element={<ClassLifecycleDemo />} />
         <Route path="/useLayoutEffectDemo" element={<UseLayoutEffectDemo />} />
         <Route path="/dataWatch" element={<DataWatch />} />
+        <Route path="/axiosDemo" element={<AxiosDemo />} />
         <Route
           path="/functionLifecycleDemo"
           element={<FunctionLifecycleDemo />}
