@@ -12,6 +12,7 @@ import WebTools from "../components/Tools/WebTools";
 import StoreCounter from "../components/Tools/StoreCounter";
 import { Navigate, Route, Routes } from "react-router-dom";
 import User from "../views/user";
+import EventHandler from "../components/EventHandler";
 
 function RouterConfig() {
   return (
@@ -25,6 +26,7 @@ function RouterConfig() {
         <Route path="/conditionRender" element={<ConditionRender />} />
         <Route path="/cycleRender" element={<CycleRender />} />
         <Route path="/dataControler" element={<DataControler />} />
+        <Route path="/eventHandler" element={<EventHandler />} />
         <Route
           path="/functionComponent"
           element={<FunctionComponent title={"函数式组件"} />}

@@ -22,6 +22,7 @@ export default defineConfig({
               { text: "循环渲染", link: "/cycleRender" },
               { text: "条件渲染", link: "/conditionRender" },
               { text: "数据绑定", link: "/dataControler" },
+              { text: "事件处理", link: "/eventHandler" },
             ],
           },
           { text: "生命周期", link: "/life" },
