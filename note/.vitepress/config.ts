@@ -29,7 +29,6 @@ export default defineConfig({
           },
           { text: "数据监听", link: "/dataWatch" },
           { text: "生命周期", link: "/life" },
-          { text: "MVVM", link: "/mvvm" },
           { text: "组件化", link: "/component" },
           { text: "工具库", link: "/tool" },
           { text: "静态存储", link: "/store" },

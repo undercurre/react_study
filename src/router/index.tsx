@@ -18,6 +18,7 @@ import StyleHandler from "../components/StyleHandler";
 import ClassLifecycleDemo from "../components/LifeCycle/ClassLifecycleDemo";
 import FunctionLifecycleDemo from "../components/LifeCycle/FunctionLifecycleDemo";
 import UseLayoutEffectDemo from "../components/LifeCycle/UseLayoutEffectDemo";
+import DataWatch from "../components/DataWatch";
 
 function RouterConfig() {
   return (
@@ -36,6 +37,7 @@ function RouterConfig() {
         <Route path="/styleHandler" element={<StyleHandler />} />
         <Route path="/classLifecycleDemo" element={<ClassLifecycleDemo />} />
         <Route path="/useLayoutEffectDemo" element={<UseLayoutEffectDemo />} />
+        <Route path="/dataWatch" element={<DataWatch />} />
         <Route
           path="/functionLifecycleDemo"
           element={<FunctionLifecycleDemo />}

@@ -61,6 +61,7 @@ const items: MenuItem[] = [
   { key: "/eventHandler", label: "EventHandler" },
   { key: "/elementRef", label: "ElementRef" },
   { key: "/styleHandler", label: "StyleHandler" },
+  { key: "/dataWatch", label: "DataWatch" },
   {
     key: "lifeCycle",
     label: "LifeCycle",
