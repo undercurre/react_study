@@ -27,7 +27,7 @@ export default defineConfig({
               { text: "样式处理", link: "/styleHandler" },
             ],
           },
-          { text: "数据监听", link: "dataWatch" },
+          { text: "数据监听", link: "/dataWatch" },
           { text: "生命周期", link: "/life" },
           { text: "MVVM", link: "/mvvm" },
           { text: "组件化", link: "/component" },
