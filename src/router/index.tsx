@@ -10,6 +10,7 @@ import AnimatedBox from "../components/Extras/Animated";
 import AntDesign from "../components/Extras/AntDesign";
 import WebTools from "../components/Tools/WebTools";
 import StoreCounter from "../components/Tools/StoreCounter";
+import UseComponent from "../views/useComponent";
 import { Navigate, Route, Routes } from "react-router-dom";
 import User from "../views/user";
 import EventHandler from "../components/EventHandler";
@@ -54,6 +55,7 @@ function RouterConfig() {
           path="/classComponent"
           element={<ClassComponent title="类定义组件" />}
         />
+        <Route path="/useComponent" element={<UseComponent />} />
         <Route path="/transitionGroup" element={<TransitionGroup />} />
         <Route path="/animated" element={<AnimatedBox />} />
         <Route path="/webTools" element={<WebTools />} />

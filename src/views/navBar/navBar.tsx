@@ -36,6 +36,7 @@ const items: MenuItem[] = [
     children: [
       { key: "/classComponent", label: "ClassComponent" },
       { key: "/functionComponent", label: "FunctionComponent" },
+      { key: "/useComponent", label: "useComponent" },
     ],
   },
   {
