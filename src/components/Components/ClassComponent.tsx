@@ -2,6 +2,7 @@ import { Component } from "react";
 
 interface Props {
   title: string;
+  user: string;
 }
 
 interface State {
@@ -17,26 +18,16 @@ class MyComponent extends Component<Props, State> {
     };
   }
 
-  // 在组件挂载前调用
-  componentWillMount() {
-    console.log("componentWillMount: Component is about to mount.");
+  getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    // 在 render 前调用，在初始挂载以及后续更新时都会被调用。
+    console.log("getDerivedStateFromProps", nextProps, prevState);
+    return null;
   }
 
   // 在组件挂载后调用
   componentDidMount() {
     console.log("componentDidMount: Component has mounted.");
     // 模拟数据加载
-    setInterval(() => {
-      this.setState((prevState) => ({ count: prevState.count + 1 }));
-    }, 1000);
-  }
-
-  // 在组件接收到新的 props 前调用
-  componentWillReceiveProps(nextProps: Props) {
-    console.log(
-      "componentWillReceiveProps: Component will receive new props:",
-      nextProps
-    );
   }
 
   // 判断组件是否需要更新
@@ -50,22 +41,19 @@ class MyComponent extends Component<Props, State> {
     return true;
   }
 
-  // 在组件更新前调用
-  componentWillUpdate(nextProps: Props, nextState: State) {
-    console.log(
-      "componentWillUpdate: Component will update.",
-      nextProps,
-      nextState
-    );
+  getSnapshotBeforeUpdate(prevProps: Props, prevState: State) {
+    console.log("getSnapshotBeforeUpdate", prevProps, prevState);
+    return "getSnapshotBeforeUpdate";
   }
 
   // 在组件更新后调用
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentDidUpdate(prevProps: Props, prevState: State, snapshot: unknown) {
     console.log(
       "componentDidUpdate: Component did update.",
       prevProps,
-      prevState
-    );
+      prevState,
+      snapshot
+    ); // "getSnapshotBeforeUpdate"
   }
 
   // 在组件卸载前调用
@@ -83,6 +71,14 @@ class MyComponent extends Component<Props, State> {
     this.setState({ count: this.state.count + 1 });
   };
 
+  showMessage() {
+    alert("Followed " + this.props.user);
+  }
+
+  handleClick() {
+    setTimeout(this.showMessage.bind(this), 3000);
+  }
+
   render() {
     console.log("Render: Component is rendering.");
     const { title } = this.props;
@@ -92,6 +88,7 @@ class MyComponent extends Component<Props, State> {
         <h1 style={this.styles.text}>{title}</h1>
         <p style={this.styles.text}>Count: {count}</p>
         <button onClick={this.handleIncrement}>Increment</button>
+        <button onClick={this.handleClick.bind(this)}>Follow</button>
       </div>
     );
   }
