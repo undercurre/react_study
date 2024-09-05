@@ -49,11 +49,11 @@ function RouterConfig() {
         />
         <Route
           path="/functionComponent"
-          element={<FunctionComponent title={"函数式组件"} />}
+          element={<FunctionComponent title={"函数式组件"} user="jack" />}
         />
         <Route
           path="/classComponent"
-          element={<ClassComponent title="类定义组件" />}
+          element={<ClassComponent title="类定义组件" user="jack" />}
         />
         <Route path="/useComponent" element={<UseComponent />} />
         <Route path="/transitionGroup" element={<TransitionGroup />} />
