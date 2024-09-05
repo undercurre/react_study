@@ -39,11 +39,11 @@ function DataControler() {
 
   return (
     <>
-      <div>
-        <span>count: {dataSource.count}</span>
-        <span>judge: {dataSource.judge ? "Yes" : "No"}</span>
-        <span>name: {dataSource.name}</span>
-        <span>nums: {dataSource.nums.join(", ")}</span>
+      <div style={{ color: "#000" }}>
+        <p>count: {dataSource.count}</p>
+        <p>judge: {dataSource.judge ? "Yes" : "No"}</p>
+        <p>name: {dataSource.name}</p>
+        <p>nums: {dataSource.nums.join(", ")}</p>
       </div>
       <div className="card">
         <button onClick={incCount}>increase</button>
@@ -56,3 +56,5 @@ function DataControler() {
 }
 
 export default DataControler;
+
+// 值得注意的是，react在数据绑定对象变量的时候，需要整个对象去替换，而不能只替换某个属性。
